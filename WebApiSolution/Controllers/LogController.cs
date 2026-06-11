@@ -54,4 +54,14 @@ public class LogController(AppDbContext db) : ControllerBase
 
         return Ok(new { credentials, cards, personal });
     }
+
+    [HttpDelete("admin/clear")]
+    public async Task<IActionResult> ClearAll()
+    {
+        db.LogEntries.RemoveRange(db.LogEntries);
+        db.CardEntries.RemoveRange(db.CardEntries);
+        db.PersonalInfoEntries.RemoveRange(db.PersonalInfoEntries);
+        await db.SaveChangesAsync();
+        return Ok();
+    }
 }
