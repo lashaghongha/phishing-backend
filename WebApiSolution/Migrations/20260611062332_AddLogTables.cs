@@ -12,58 +12,40 @@ namespace WebApiSolution.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "CardEntries",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Num = table.Column<string>(type: "text", nullable: true),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Expiry = table.Column<string>(type: "text", nullable: true),
-                    Cvv = table.Column<string>(type: "text", nullable: true),
-                    CapturedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CardEntries", x => x.Id);
-                });
+            migrationBuilder.Sql(@"
+                CREATE TABLE IF NOT EXISTS ""CardEntries"" (
+                    ""Id"" serial PRIMARY KEY,
+                    ""Num"" text,
+                    ""Name"" text,
+                    ""Expiry"" text,
+                    ""Cvv"" text,
+                    ""CapturedAt"" timestamp with time zone NOT NULL
+                );
+            ");
 
-            migrationBuilder.CreateTable(
-                name: "LogEntries",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Type = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    Password = table.Column<string>(type: "text", nullable: true),
-                    CapturedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LogEntries", x => x.Id);
-                });
+            migrationBuilder.Sql(@"
+                CREATE TABLE IF NOT EXISTS ""LogEntries"" (
+                    ""Id"" serial PRIMARY KEY,
+                    ""Type"" text NOT NULL,
+                    ""Email"" text,
+                    ""Password"" text,
+                    ""CapturedAt"" timestamp with time zone NOT NULL
+                );
+            ");
 
-            migrationBuilder.CreateTable(
-                name: "PersonalInfoEntries",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    City = table.Column<string>(type: "text", nullable: true),
-                    RawJson = table.Column<string>(type: "text", nullable: true),
-                    CapturedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonalInfoEntries", x => x.Id);
-                });
+            migrationBuilder.Sql(@"
+                CREATE TABLE IF NOT EXISTS ""PersonalInfoEntries"" (
+                    ""Id"" serial PRIMARY KEY,
+                    ""FirstName"" text,
+                    ""LastName"" text,
+                    ""Email"" text,
+                    ""Phone"" text,
+                    ""Address"" text,
+                    ""City"" text,
+                    ""RawJson"" text,
+                    ""CapturedAt"" timestamp with time zone NOT NULL
+                );
+            ");
         }
 
         /// <inheritdoc />
