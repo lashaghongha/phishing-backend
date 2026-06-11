@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,88 +12,6 @@ namespace WebApiSolution.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "UpdatedAt",
-                table: "Products",
-                type: "timestamp with time zone",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "datetime2");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Products",
-                type: "text",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Products",
-                type: "text",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Products",
-                type: "timestamp with time zone",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "datetime2");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "CategoryId",
-                table: "Products",
-                type: "integer",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Products",
-                type: "integer",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Categories",
-                type: "text",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Categories",
-                type: "text",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Categories",
-                type: "timestamp with time zone",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "datetime2");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Categories",
-                type: "integer",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
             migrationBuilder.CreateTable(
                 name: "CardEntries",
                 columns: table => new
@@ -151,96 +69,9 @@ namespace WebApiSolution.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "CardEntries");
-
-            migrationBuilder.DropTable(
-                name: "LogEntries");
-
-            migrationBuilder.DropTable(
-                name: "PersonalInfoEntries");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "UpdatedAt",
-                table: "Products",
-                type: "datetime2",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp with time zone");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "text");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "text");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Products",
-                type: "datetime2",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp with time zone");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "CategoryId",
-                table: "Products",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "integer");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Products",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "integer")
-                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Categories",
-                type: "nvarchar(max)",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "text");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Categories",
-                type: "nvarchar(max)",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "text");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "CreatedAt",
-                table: "Categories",
-                type: "datetime2",
-                nullable: false,
-                oldClrType: typeof(DateTime),
-                oldType: "timestamp with time zone");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Categories",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "integer")
-                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+            migrationBuilder.DropTable(name: "CardEntries");
+            migrationBuilder.DropTable(name: "LogEntries");
+            migrationBuilder.DropTable(name: "PersonalInfoEntries");
         }
     }
 }
